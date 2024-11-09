@@ -78,45 +78,7 @@ export default function ChatSection() {
         />
       ))}
 
-      <style jsx global>{`
-        .floating-star {
-          position: absolute;
-          width: 12px;
-          height: 12px;
-          background: radial-gradient(circle at 30% 30%, #fde047, #fcd34d);
-          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-          opacity: 0;
-          animation: float-and-fade linear forwards;
-        }
-
-        @keyframes float-and-fade {
-          0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0;
-          }
-          20% {
-            opacity: 0.3;
-          }
-          80% {
-            opacity: 0.3;
-          }
-          100% {
-            transform: translateY(-100px) rotate(180deg);
-            opacity: 0;
-          }
-        }
-
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 4s ease infinite;
-        }
-      `}</style>
+    
     </section>
   )
 }

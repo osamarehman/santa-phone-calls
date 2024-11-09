@@ -84,33 +84,6 @@ export default function Footer() {
         </div>
       </div>
 
-      <style jsx global>{`
-        .footer-sparkle {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          background: radial-gradient(circle at 30% 30%, #ef4444, #dc2626);
-          border-radius: 50%;
-          pointer-events: none;
-          animation: sparkle-fade-out linear forwards;
-          z-index: 10;
-        }
-
-        @keyframes sparkle-fade-out {
-          0% {
-            transform: scale(0) rotate(0deg);
-            opacity: 0;
-          }
-          50% {
-            transform: scale(1) rotate(180deg);
-            opacity: 0.8;
-          }
-          100% {
-            transform: scale(0) rotate(360deg);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </footer>
   )
 }

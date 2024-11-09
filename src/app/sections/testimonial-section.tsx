@@ -150,64 +150,7 @@ export default function TestimonialSection() {
         </div>
       </div>
 
-      <style jsx global>{`
-        .sparkle {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          background: radial-gradient(circle, #fff 0%, transparent 70%);
-          border-radius: 50%;
-          pointer-events: none;
-          animation: sparkle-fade-out linear forwards;
-          z-index: 2;
-        }
-
-        @keyframes sparkle-fade-out {
-          0% {
-            transform: scale(0);
-            opacity: 0;
-          }
-          50% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(0);
-            opacity: 0;
-          }
-        }
-
-        @keyframes sway {
-          0%, 100% { transform: rotate(-1deg); }
-          50% { transform: rotate(1deg); }
-        }
-
-        @keyframes sway-reverse {
-          0%, 100% { transform: rotate(1deg); }
-          50% { transform: rotate(-1deg); }
-        }
-
-        .animate-sway {
-          animation: sway 6s ease-in-out infinite;
-          transform-origin: bottom;
-        }
-
-        .animate-sway-reverse {
-          animation: sway-reverse 6s ease-in-out infinite;
-          transform-origin: bottom;
-        }
-
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-gradient {
-          animation: gradient 3s ease infinite;
-          background-size: 200% auto;
-        }
-      `}</style>
+    
     </section>
   )
 }

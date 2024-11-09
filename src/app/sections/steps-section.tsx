@@ -125,47 +125,7 @@ export default function StepsSection() {
         </div>
       </div>
 
-      <style jsx global>{`
-        @keyframes snowfall {
-          0% {
-            transform: translateY(-20px) rotate(0deg);
-          }
-          100% {
-            transform: translateY(100vh) rotate(360deg);
-          }
-        }
-
-        .snowflake {
-          position: absolute;
-          top: -10px;
-          background: white;
-          border-radius: 50%;
-          pointer-events: none;
-          animation: snowfall linear forwards;
-          filter: blur(1px);
-          z-index: 1;
-        }
-
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.2; }
-        }
-
-        .animate-twinkle {
-          animation: twinkle 4s ease-in-out infinite;
-        }
-
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 4s ease infinite;
-        }
-      `}</style>
+     
     </section>
   )
 }

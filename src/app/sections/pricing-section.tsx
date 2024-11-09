@@ -114,34 +114,7 @@ export default function PricingSection({ packages = defaultPackages }: PricingSe
           </div>
         </div>
       </div>
-      <style jsx global>{`
-        .snowflake {
-          position: absolute;
-          color: #fff;
-          text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-          pointer-events: none;
-          z-index: 1;
-          animation: fall linear forwards;
-          background: transparent;
-          -webkit-text-fill-color: white;
-          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-        }
-
-        @keyframes fall {
-          0% {
-            transform: translateY(-10%) rotate(0deg);
-          }
-          100% {
-            transform: translateY(110%) rotate(360deg);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .snowflake {
-            animation: none;
-          }
-        }
-      `}</style>
+    
     </section>
   )
 }

@@ -210,47 +210,7 @@ export default function HeroContent() {
         </div>
       </div>
 
-      <style jsx global>{`
-        .star {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          background: white;
-          border-radius: 50%;
-          animation: twinkle 3s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-          0%, 100% { opacity: 0; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.5); }
-        }
-
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 4s ease infinite;
-        }
-
-        .animate-gradient-slow {
-          background-size: 200% auto;
-          animation: gradient 6s ease infinite;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .star {
-            animation: none;
-          }
-          .animate-gradient,
-          .animate-gradient-slow {
-            animation: none;
-          }
-        }
-      `}</style>
+     
     </main>
   )
 }
