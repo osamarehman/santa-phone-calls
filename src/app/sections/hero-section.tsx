@@ -88,7 +88,7 @@ export default function HeroContent() {
   return (
     <main 
       ref={sectionRef}
-      className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center md:justify-start overflow-hidden"
+      className="relative min-h-[calc(100vh-20rem)] flex items-center justify-center md:justify-start overflow-hidden"
     >
     
 
