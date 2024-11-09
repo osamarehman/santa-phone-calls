@@ -4,6 +4,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
-    // Add any custom rules here
+    "react/no-unescaped-entities": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

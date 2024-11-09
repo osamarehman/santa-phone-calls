@@ -1,16 +1,20 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
+import { useEffect, useRef, useState } from 'react'
 import { Play, Pause, Volume2 } from 'lucide-react'
 
 export default function HeroContent() {
+  const sectionRef = useRef<HTMLElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [progress, setProgress] = useState(0)
+
   const audioRef = useRef<HTMLAudioElement>(null)
+
+  
 
   useEffect(() => {
     if (audioRef.current) {
@@ -53,46 +57,87 @@ export default function HeroContent() {
     setProgress((currentTime / duration) * 100)
   }
 
-  return (
-    <>
-      
-      <main className="relative pt-16 min-h-[calc(100vh-4rem)] flex items-center bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black/0" />
 
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 sm:py-20">
-          <div className="max-w-3xl space-y-8 sm:space-y-12">
+
+  useEffect(() => {
+    // Create twinkling stars effect
+    const createStar = () => {
+      const star = document.createElement('div')
+      star.classList.add('star')
+      star.style.left = `${Math.random() * 100}%`
+      star.style.top = `${Math.random() * 100}%`
+      star.style.animationDelay = `${Math.random() * 3}s`
+      sectionRef.current?.appendChild(star)
+
+      setTimeout(() => {
+        star.remove()
+      }, 3000)
+    }
+
+    // Create initial stars
+    for (let i = 0; i < 20; i++) {
+      createStar()
+    }
+
+    const intervalId = setInterval(createStar, 300)
+    return () => clearInterval(intervalId)
+  }, [])
+
+  return (
+    <main 
+      ref={sectionRef}
+      className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center md:justify-start overflow-hidden"
+    >
+      {/* Dotted pattern background */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `radial-gradient(#fff 1px, transparent 1px), url('/placeholder.svg?height=1080&width=1920')`,
+          backgroundSize: '20px 20px, cover',
+          backgroundPosition: '0 0, center',
+          backgroundRepeat: 'repeat, no-repeat'
+        }}
+      />
+
+      {/* Removed Gradient overlay */}
+
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10 py-12 md:py-0">
+        <div className="max-w-3xl mx-auto md:mx-0 space-y-8 md:space-y-12">
+          <div className="text-center md:text-left space-y-6">
             <h1 className="space-y-2">
-              <span className="block text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white">
-                Get A <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-pink-600">Live Call</span>
+              <span className="block text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-pink-300 via-red-200 to-pink-300 bg-clip-text text-transparent animate-gradient">
+                Get A Live Call
               </span>
-              <span className="block text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white">
-                From <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">Santa</span>
+              <span className="block text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-teal-300 via-cyan-200 to-teal-300 bg-clip-text text-transparent animate-gradient-slow">
+                From Santa
               </span>
             </h1>
             
             <div className="space-y-2">
-              <p className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-                Create A <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">Memory</span>
+              <p className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-purple-300 via-blue-200 to-purple-300 bg-clip-text text-transparent animate-gradient">
+                Create A Memory
               </p>
-              <p className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-                That Lasts <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-600">Forever</span>.
+              <p className="text-2xl md:text-4xl font-bold text-white">
+                That Lasts Forever.
               </p>
             </div>
+          </div>
           
-            <div className="space-y-8">
+          <div className="space-y-8 md:space-y-12">
+            <div className="flex justify-center md:justify-start">
               <div className="relative w-full max-w-md">
                 <button
                   onClick={togglePlayback}
-                  className="group flex items-center gap-3 text-white text-2xl sm:text-3xl font-medium transition-colors hover:text-white/90"
+                  className="group flex items-center gap-3 text-white text-2xl font-medium transition-colors hover:text-white/90"
                 >
                   <span className="drop-shadow-lg">Listen to a Call</span>
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm transition-all active:scale-95 active:bg-white/40">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm transition-colors">
                     <Play className="w-6 h-6 text-white" />
                   </div>
                 </button>
 
                 {isExpanded && (
-                  <div className="mt-4 bg-white/10 backdrop-blur-sm rounded-full p-3 text-white shadow-lg">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-full p-3 text-white shadow-lg">
                     <div className="flex items-center gap-4">
                       <Button
                         variant="ghost"
@@ -148,29 +193,71 @@ export default function HeroContent() {
                   onEnded={handleEnded}
                 />
               </div>
-              
-              <div className="flex flex-col sm:flex-row items-stretch gap-4 max-w-md">
-                <Button
-                  asChild
-                  className="h-12 sm:h-14 px-6 text-lg sm:text-xl bg-[#22c55e] hover:bg-[#16a34a] text-white rounded-full transition-all shadow-lg active:scale-95 active:shadow-inner"
-                >
-                  <Link href="#pricing">
-                    Talk Now
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  className="h-12 sm:h-14 px-6 text-lg sm:text-xl bg-[#dc2626] hover:bg-[#b91c1c] text-white rounded-full transition-all shadow-lg active:scale-95 active:shadow-inner"
-                >
-                  <Link href="#pricing">
-                    Includes Recording
-                  </Link>
-                </Button>
-              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-stretch gap-4 max-w-md mx-auto md:mx-0">
+              <Button
+                asChild
+                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-600 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/20 h-auto"
+              >
+                <Link href="#pricing">
+                  Talk Now
+                </Link>
+              </Button>
+              <Button
+                asChild
+                className="bg-gradient-to-r from-red-600/90 to-red-500/90 hover:from-red-500/90 hover:to-red-600/90 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-red-500/20 backdrop-blur-sm h-auto"
+              >
+                <Link href="#pricing">
+                  Includes Recording
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+
+      <style jsx global>{`
+        .star {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: white;
+          border-radius: 50%;
+          animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+          0%, 100% { opacity: 0; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .animate-gradient {
+          background-size: 200% auto;
+          animation: gradient 4s ease infinite;
+        }
+
+        .animate-gradient-slow {
+          background-size: 200% auto;
+          animation: gradient 6s ease infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .star {
+            animation: none;
+          }
+          .animate-gradient,
+          .animate-gradient-slow {
+            animation: none;
+          }
+        }
+      `}</style>
+    </main>
   )
 }
