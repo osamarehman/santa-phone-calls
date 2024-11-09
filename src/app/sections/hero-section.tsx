@@ -90,16 +90,7 @@ export default function HeroContent() {
       ref={sectionRef}
       className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center md:justify-start overflow-hidden"
     >
-      {/* Dotted pattern background */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `radial-gradient(#fff 1px, transparent 1px), url('/placeholder.svg?height=1080&width=1920')`,
-          backgroundSize: '20px 20px, cover',
-          backgroundPosition: '0 0, center',
-          backgroundRepeat: 'repeat, no-repeat'
-        }}
-      />
+    
 
       {/* Removed Gradient overlay */}
 
