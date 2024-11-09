@@ -104,7 +104,7 @@ export default function PricingSection({ packages = defaultPackages }: PricingSe
                     asChild
                     className="w-full bg-black hover:bg-gray-800 text-white"
                   >
-                    <Link href={`/checkout?package=${pkg.id}`}>
+                    <Link href={`/?${pkg.id}`}>
                       Buy Now
                     </Link>
                   </Button>
