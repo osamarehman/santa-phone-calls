@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Santa Phone Calls
+
+A Next.js application for scheduling live calls with Santa.
 
 ## Getting Started
 
