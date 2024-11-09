@@ -17,10 +17,12 @@ export default function HeroContent() {
   
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.addEventListener('ended', handleEnded)
+    const currentAudioRef = audioRef.current;
+    
+    if (currentAudioRef) {
+      currentAudioRef.addEventListener('ended', handleEnded)
       return () => {
-        audioRef.current?.removeEventListener('ended', handleEnded)
+        currentAudioRef.removeEventListener('ended', handleEnded)
       }
     }
   }, [])

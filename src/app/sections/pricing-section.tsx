@@ -71,7 +71,7 @@ export default function PricingSection({ packages = defaultPackages }: PricingSe
               Bring the <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-green-500 animate-gradient">magic of Christmas</span> to life with a real-time, personalized <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-red-500 animate-gradient">phone call</span> from <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-red-500 animate-gradient">Santa</span> himself!
             </h2>
             <p className="text-lg text-blue-800">
-              Watch children's faces light up as Santa knows their name, wishes, and favorite things in a one-on-one conversation they'll never forget.
+              Watch children&apos;s faces light up as Santa knows their name, wishes, and favorite things in a one-on-one conversation they&apos;ll never forget.
             </p>
           </div>
           
